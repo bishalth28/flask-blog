@@ -1,8 +1,73 @@
 {% extends 'base.jinja2' %}
+{% block head %}
+<style>
+    .post-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    }
 
-{% block title %}{{ post.title }}{% endblock %}
+    .post-container h1 {
+    font-size: 30px;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    }
 
+    .post-tag {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 20px;
+    }
+
+    .post-description {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #444;
+    white-space: pre-line;
+    }
+
+    .back-link {
+    display: inline-block;
+    margin-top: 30px;
+    font-size: 16px;
+    color: #6c5ce7;
+    text-decoration: none;
+    font-weight: bold;
+    }
+
+    .back-link:hover {
+    text-decoration: underline;
+    }
+    .back-home-button {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 10px 20px;
+    background-color: #6c5ce7;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    }
+
+    .back-home-button:hover {
+    background-color: #5a4dbb;
+    text-decoration: none;
+    }
+
+
+</style>
+{% endblock %}
 {% block content %}
-    <h2>{{ post.title }}</h2>
-    <p>{{ post.content }}</p>
+<div class="post-container">
+  <h2>{{ post.title }}</h2>
+  <p><strong>Tag:</strong> {{ post.tag }}</p>
+  <p>{{ post.description }}</p>
+  <br>
+  <a href="{{ url_for('home') }}" class="back-home-button">Back to Home</a>
+</div>
 {% endblock %}

@@ -1,21 +1,89 @@
 {% extends 'base.jinja2' %}
+{% block head %}
+<style>
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f7f9fc;
+    margin: 0;
+    padding: 0;
+  }
+
+  .form-container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  }
+
+  .form-container h2 {
+    margin-top: 0;
+    color: #2c3e50;
+  }
+
+  .form-container input[type="text"],
+  .form-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+
+  .form-container button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #6c5ce7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .form-container button:hover {
+    background-color: #5a4dbb;
+  }
+  .back-home-button {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 10px 20px;
+    background-color: #6c5ce7;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    }
+
+    .back-home-button:hover {
+    background-color: #5a4dbb;
+    text-decoration: none;
+    }
+
+</style>
+{% endblock %}
 
 {% block content %}
-    <h1>Create Post</h1>
-    <form>
-        <div>
-            <label for="title">Title</label>
-            <input type="text" name = "title"/>
-        </div>
+<div class="form-container">
+  <h2>Create New Blog Post</h2>
+  <form method="POST">
+    Title:<br>
+    <input type="text" name="title"><br><br>
 
-        <div>
-            <label for="content">content</label>
-            <textarea name="content"></textarea>
-        </div>
-        <div>
-            <input type="submit" />
+    Tag:<br>
+    <input type="text" name="tag"><br><br>
 
-        </div>
+    Description:<br>
+    <textarea name="description" rows="5" cols="40"></textarea><br><br>
 
-    </form>
+    <button type="submit">Create Post</button>
+    <br>
+     <a href="{{ url_for('home') }}" class="back-home-button">Back to Home</a>
+  </form>
+</div>
 {% endblock %}
